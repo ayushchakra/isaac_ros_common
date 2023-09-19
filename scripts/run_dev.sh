@@ -188,7 +188,11 @@ docker run -it --rm \
     --runtime nvidia \
     --user="admin" \
     --entrypoint /usr/local/bin/scripts/workspace-entrypoint.sh \
+    -v /sys/devices/:/sys/devices/ \
+    -v /sys/class/gpio:/sys/class/gpio \
     --workdir /workspaces/isaac_ros-dev \
+    --group-add $(cut -d: -f3 < <(getent group gpio))\
+    --group-add 113\
     $@ \
     $BASE_NAME \
     /bin/bash
