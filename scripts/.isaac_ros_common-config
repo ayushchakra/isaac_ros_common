@@ -1,1 +1,1 @@
-CONFIG_IMAGE_KEY=ros2_humble.i2c
+CONFIG_IMAGE_KEY=ros2_humble.realsense.i2c

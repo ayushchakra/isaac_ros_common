@@ -190,9 +190,11 @@ docker run -it --rm \
     --entrypoint /usr/local/bin/scripts/workspace-entrypoint.sh \
     -v /sys/devices/:/sys/devices/ \
     -v /sys/class/gpio:/sys/class/gpio \
+    -v /dev/bus/usb:/dev/bus/usb \
     --workdir /workspaces/isaac_ros-dev \
     --group-add $(cut -d: -f3 < <(getent group gpio))\
     --group-add 113\
+    --group-add 20\
     $@ \
     $BASE_NAME \
     /bin/bash
